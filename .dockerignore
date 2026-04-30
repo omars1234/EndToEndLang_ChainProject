@@ -1,0 +1,47 @@
+# envs
+.venv/
+venv/
+env/
+
+# uv cache
+.cache/
+.uv/
+
+# python
+__pycache__/
+*.pyc
+
+# git
+.git
+.gitignore
+.github
+
+# logs
+*.log
+
+# data (CRITICAL)
+data/
+datasets/
+models/
+
+# vector db (VERY IMPORTANT for LangChain)
+chroma/
+faiss_index/
+vectorstore/
+.persist/
+db/
+
+# files
+*.pdf
+*.csv
+*.parquet
+*.pkl
+*.joblib
+
+# dev stuff
+notebooks/
+tests/
+
+# misc
+.DS_Store
+Thumbs.db

@@ -1,7 +1,9 @@
 
-import os
 
-#from turtle import pdf
+import os
+from dotenv import load_dotenv
+load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname("../"), ".env"))
 
 from langchain_community.document_loaders import TextLoader,PyPDFLoader,PyMuPDFLoader,CSVLoader,WebBaseLoader,DirectoryLoader,YoutubeLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter,CharacterTextSplitter,TokenTextSplitter#SemanticChunker
@@ -14,17 +16,19 @@ from langchain_groq import ChatGroq
 from langchain.chat_models import init_chat_model
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_classic.chains.retrieval import create_retrieval_chain
-from EndToEndLangChainProject.prompt import system_prompt
+#from EndToEndLangChainProject.prompt import system_prompt
 from langchain_huggingface  import HuggingFaceEmbeddings
-
-from EndToEndLangChainProject.helper import PDF_loader_fuction, web_loader_fuction,spiltter_function,embedding_function,vector_store_function,Create_documents_chain
+from src.EndToEndLangChainProject.helper import PDF_loader_fuction, web_loader_fuction,spiltter_function,embedding_function,vector_store_function,Create_documents_chain
 import time
 import tempfile
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
-load_dotenv(dotenv_path=os.path.join(os.path.dirname("../"), ".env"))
+system_prompt= ( """ You are a helpful assistant,
+        answer the following question only based on the provided context.
+        if you don't know the answer, say -sorry we cannot answer that question
+        as the provided context doesn't contain the information needed-.
+        context:{context}
+                """)
+
 
 
 os.environ["USER_AGENT"] = os.getenv("USER_AGENT")

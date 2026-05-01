@@ -30,8 +30,8 @@ llm = init_chat_model("groq:openai/gpt-oss-120b")
 
 def web_loader_fuction(web_path):
     print("Loading web content...")
-    web_loader=WebBaseLoader([web_path],
-                             headers={"User-Agent": os.getenv("USER_AGENT")})
+    web_loader=WebBaseLoader([web_path])
+                             #headers={"User-Agent": os.getenv("USER_AGENT")})
     documents=web_loader.load()
     print(f"Loaded {len(documents)} documents from the web.")
     return documents
